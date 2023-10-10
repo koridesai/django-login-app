@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block title %}Home{% endblock %}
+    {% block content %}
+    <div style="width: 100%; padding-top: 100px; text-align: center;">
+        {% if user.is_authenticated %}
+        <h3>User Data</h3>
+            <table  style="margin-left: auto;margin-right: auto;">
+                <tr>
+                    <td><h4>Username:</h4></td>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <td><h4>First Name:</h4></td>
+                    <td>{{ user.first_name }}</td>
+                </tr>
+                <tr>
+                    <td><h4>Last Name:</h4></td>
+                    <td>{{user.last_name}}</td>
+                </tr>
+                <tr>
+                    <td><h4>Email:</h4></td>
+                    <td>{{ user.email }}</td>
+                </tr>
+            </table>
+            <h4><a href="{% url 'logout' %}">Logout</a></h4>
+        {% else %}
+            <h4>You are not logged in</h4>
+        <h4><a href="{% url 'login' %}">Click here to login</a></h4>
+        {% endif %}
+    </div>
+    {% endblock %}
+</body>
+</html>

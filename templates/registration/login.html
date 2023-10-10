@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% extends 'base.html' %}
+    {% block title %}Login{% endblock %}
+    {% block content %}
+    <div style="width: 100%; padding-top: 120px; text-align: center;">
+        <h2 >Login to your Account</h2>
+        <form method="post" style="position:absolute;width:100%;padding-top: 30px;text-align: center">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+    {% endblock %}
+</body>
+</html>
